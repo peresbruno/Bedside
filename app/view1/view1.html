@@ -1,0 +1,28 @@
+<div class="container" style="margin-top: 20px;">
+  Quarto: <span ng-show="data.numeroQuarto" class="badge">{{data.numeroQuarto}}</span>
+  <br />
+  Leito: <span ng-show="data.numeroLeito" class="badge">{{data.numeroLeito}}</span>
+
+  <div ng-show="paciente">
+     Nome do paciente: <span class="badge">{{paciente.nome}}</span>
+     <br />
+     Data de nascimento <span class="badge">{{paciente.nascimento}}</span>
+  </div>
+
+  <table ng-show="data.medicoes.length" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Data / Hora</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="medicao in data.medicoes">
+        <td>{{medicao.data | date : 'd/M/yy hh:mm' }}</td>
+        <td>{{medicao.tipo }}</td>
+        <td>{{medicao.valor}}<span ng-if="medicao.tipo == 'Pressão'"> mmhg</span><span ng-if="medicao.tipo == 'Temperatura'"> °C</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
